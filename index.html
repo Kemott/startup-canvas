@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6fa">
+  <title>Startup Canvas — Business Model Canvas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar no-print">
+    <a class="brand" href="#" aria-label="Startup Canvas">
+      <span class="brand-mark">SC</span>
+      <span><strong>Startup Canvas</strong><small>Business Model Canvas</small></span>
+    </a>
+    <div class="toolbar">
+      <label class="project-label" for="projectName">Projekt</label>
+      <input id="projectName" class="project-input" value="Mój pomysł biznesowy" maxlength="90">
+      <button id="newProjectBtn" class="btn btn-quiet" type="button">Nowy</button>
+      <button id="importBtn" class="btn btn-quiet" type="button">Importuj</button>
+      <button id="exportBtn" class="btn btn-quiet" type="button">Eksport JSON</button>
+      <button id="printBtn" class="btn btn-primary" type="button">Drukuj / PDF</button>
+      <input id="fileInput" type="file" accept=".json,application/json" hidden>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="intro no-print">
+      <div>
+        <p class="eyebrow">STRATEGIA • HIPOTEZY • WALIDACJA</p>
+        <h1>Model biznesowy</h1>
+        <p class="subhead">Zapisuj pomysły, oddzielaj założenia od faktów i rozwijaj model krok po kroku.</p>
+      </div>
+      <div class="legend" aria-label="Statusy notatek">
+        <span><i class="dot status-question"></i> Do sprawdzenia</span>
+        <span><i class="dot status-hypothesis"></i> Hipoteza</span>
+        <span><i class="dot status-confirmed"></i> Potwierdzone</span>
+        <span><i class="dot status-rejected"></i> Odrzucone</span>
+      </div>
+    </section>
+
+    <section class="canvas-heading">
+      <div>
+        <h2 id="canvasProjectTitle">Mój pomysł biznesowy</h2>
+        <p id="lastSaved" class="save-state">Zapis lokalny włączony</p>
+      </div>
+      <button id="addIdeaBtn" class="btn btn-add no-print" type="button">＋ Dodaj notatkę</button>
+    </section>
+
+    <section id="canvas" class="canvas-grid" aria-label="Business Model Canvas">
+      <article class="canvas-cell partners" data-section="partners">
+        <div class="cell-head"><span class="cell-icon">🤝</span><div><h3>Kluczowi partnerzy</h3><small>Key Partnerships</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+      <article class="canvas-cell activities" data-section="activities">
+        <div class="cell-head"><span class="cell-icon">⚙️</span><div><h3>Kluczowe działania</h3><small>Key Activities</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+      <article class="canvas-cell resources" data-section="resources">
+        <div class="cell-head"><span class="cell-icon">🧰</span><div><h3>Kluczowe zasoby</h3><small>Key Resources</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+      <article class="canvas-cell value" data-section="value">
+        <div class="cell-head"><span class="cell-icon">💎</span><div><h3>Propozycja wartości</h3><small>Value Propositions</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+      <article class="canvas-cell relationships" data-section="relationships">
+        <div class="cell-head"><span class="cell-icon">💬</span><div><h3>Relacje z klientami</h3><small>Customer Relationships</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+      <article class="canvas-cell channels" data-section="channels">
+        <div class="cell-head"><span class="cell-icon">📣</span><div><h3>Kanały</h3><small>Channels</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+      <article class="canvas-cell segments" data-section="segments">
+        <div class="cell-head"><span class="cell-icon">🎯</span><div><h3>Segmenty klientów</h3><small>Customer Segments</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+      <article class="canvas-cell costs" data-section="costs">
+        <div class="cell-head"><span class="cell-icon">💸</span><div><h3>Struktura kosztów</h3><small>Cost Structure</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+      <article class="canvas-cell revenue" data-section="revenue">
+        <div class="cell-head"><span class="cell-icon">💰</span><div><h3>Strumienie przychodów</h3><small>Revenue Streams</small></div><button class="add-note no-print" aria-label="Dodaj notatkę">＋</button></div>
+        <div class="notes"></div>
+      </article>
+    </section>
+
+    <footer class="footer no-print">
+      <span>Zmiany zapisują się automatycznie w tej przeglądarce.</span>
+      <span>Przenoszenie na inne urządzenie: Eksport JSON → Importuj.</span>
+    </footer>
+  </main>
+
+  <dialog id="noteDialog" class="note-dialog">
+    <form id="noteForm" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow">NOTATKA CANVAS</p><h2 id="dialogTitle">Dodaj notatkę</h2></div><button class="icon-btn" type="button" id="closeDialog" aria-label="Zamknij">×</button></div>
+      <label for="noteText">Treść</label>
+      <textarea id="noteText" rows="5" maxlength="1200" placeholder="Opisz pomysł, założenie lub ustalenie..." required></textarea>
+      <label for="noteStatus">Status informacji</label>
+      <select id="noteStatus">
+        <option value="question">Do sprawdzenia</option>
+        <option value="hypothesis">Hipoteza</option>
+        <option value="confirmed">Potwierdzone</option>
+        <option value="rejected">Odrzucone</option>
+      </select>
+      <div class="dialog-actions">
+        <button id="deleteNoteBtn" class="btn btn-danger" type="button" hidden>Usuń</button>
+        <span class="spacer"></span>
+        <button class="btn btn-quiet" type="button" id="cancelDialog">Anuluj</button>
+        <button class="btn btn-primary" type="submit">Zapisz notatkę</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast no-print" role="status" aria-live="polite"></div>
+  <script src="js/storage.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
